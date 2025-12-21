@@ -12,8 +12,8 @@ Example Playbook
          - name: Setup dotfiles
            role: dotfiles
            vars:
-            repo: https://github.com/owner/dotfiles.git
-            dest: "/home/{{ ansible_user }}/.dotfiles" 
+            dotfiles_repo: https://github.com/owner/dotfiles.git
+            dotfiles_dest: "/home/{{ ansible_user }}/.dotfiles" 
 
 License
 -------

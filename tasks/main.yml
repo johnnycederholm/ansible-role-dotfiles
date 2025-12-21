@@ -9,10 +9,10 @@
 
 - name: Clone dotfiles repository
   ansible.builtin.git:
-    repo: {{ repo }}
-    dest: {{ dest }}
+    repo: "{{ dotfiles_repo }}"
+    dest: "{{ dotfiles_dest }}"
 
 - name: Run stow
   ansible.builtin.shell: 
     cmd: "stow . --adopt --verbose=2"
-    chdir: {{ dest }}
+    chdir: "{{ dotfiles_dest }}"
