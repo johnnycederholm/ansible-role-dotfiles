@@ -1,0 +1,8 @@
+#SPDX-License-Identifier: MIT-0
+galaxy_info:
+  author: Johnny Cederholm
+  description: Ansible role for setting up dotfiles hosted in Git repo
+  license: MIT
+  min_ansible_version: 2.18.7
+  galaxy_tags: []
+dependencies: []

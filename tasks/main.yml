@@ -1,0 +1,18 @@
+#SPDX-License-Identifier: MIT-0
+---
+- name: Install prerequisites
+  ansible.builtin.apt:
+    name:
+      - git
+      - stow
+    state: present
+
+- name: Clone dotfiles repository
+  ansible.builtin.git:
+    repo: {{ repo }}
+    dest: {{ dest }}
+
+- name: Run stow
+  ansible.builtin.shell: 
+    cmd: "stow . --adopt --verbose=2"
+    chdir: {{ dest }}
