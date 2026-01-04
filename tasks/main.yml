@@ -8,11 +8,21 @@
     state: present
 
 - name: Clone dotfiles repository
+  become_user: "{{ dotfiles_owner }}"
   ansible.builtin.git:
     repo: "{{ dotfiles_repo }}"
     dest: "{{ dotfiles_dest }}"
 
 - name: Run stow
-  ansible.builtin.shell: 
+  become_user: "{{ dotfiles_owner }}"
+  ansible.builtin.command:
     cmd: "stow . --adopt --verbose=2"
+    chdir: "{{ dotfiles_dest }}"
+
+# Reset dotfiles repository after running stow
+# with --adopt
+- name: Reset dotfiles repository
+  become_user: "{{ dotfiles_owner }}"
+  ansible.builtin.command:
+    cmd: "git reset --hard"
     chdir: "{{ dotfiles_dest }}"
